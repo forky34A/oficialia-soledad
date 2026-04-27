@@ -16,183 +16,212 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: var(--verde-suave);
-            color: #333;
-            line-height: 1.6;
             padding: 15px;
+            color: #333;
         }
 
         .contenedor {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        header { text-align: center; border-bottom: 3px solid var(--verde-gob); padding-bottom: 20px; margin-bottom: 20px; }
-        #logo { max-width: 130px; margin-bottom: 10px; }
-        h1 { color: var(--verde-gob); font-size: 2rem; }
-
-        .aviso {
-            background: #fff3cd;
-            color: #856404;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid #ffeeba;
-            margin-bottom: 20px;
-        }
-
-        .seccion-titulo {
+        header { text-align: center; border-bottom: 3px solid var(--verde-gob); padding-bottom: 15px; margin-bottom: 20px; }
+        #logo { max-width: 100px; }
+        
+        /* ACORDEÓN PRINCIPAL (VERDE) */
+        .menu-principal {
             background: var(--verde-gob);
             color: white;
-            padding: 12px;
-            margin-top: 40px;
-            border-radius: 5px;
-            font-size: 1.4rem;
-            text-transform: uppercase;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        h3 { color: var(--verde-gob); margin-top: 20px; border-bottom: 2px solid var(--dorado); display: inline-block; }
+        .menu-principal > summary {
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ACORDEÓN ANIDADO (DORADO/GRIS) */
+        .submenu {
+            background: #f9f9f9;
+            margin: 10px;
+            border-left: 4px solid var(--dorado);
+            border-radius: 4px;
+        }
+
+        .submenu summary {
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            color: #444;
+        }
+
+        .contenido {
+            padding: 15px;
+            background: white;
+        }
 
         .lista-requisitos {
-            background: #fdfdfd;
-            padding: 20px;
-            border-left: 5px solid var(--dorado);
-            margin: 15px 0;
             list-style: none;
+            padding-left: 5px;
         }
 
-        .lista-requisitos li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .lista-requisitos li::before { content: "✓"; color: var(--verde-gob); position: absolute; left: 0; font-weight: bold; }
+        .lista-requisitos li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
 
-        .sub-nota {
-            background: #f8f9fa;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
+        .lista-requisitos li::before {
+            content: "✓";
+            color: var(--verde-gob);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
         .grid-fotos {
             display: grid;
-            gap: 15px;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            margin: 25px 0;
+            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            margin-top: 15px;
         }
 
         .grid-fotos img {
             width: 100%;
-            height: 180px;
+            height: 140px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 3px solid #eee;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
 
-        .footer-info {
+        .footer {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
-            font-size: 0.9rem;
+            margin-top: 30px;
+            font-size: 0.8rem;
             color: #666;
         }
 
-        @media (min-width: 600px) {
-            .grid-fotos { grid-template-columns: repeat(3, 1fr); }
-        }
+        summary::after { content: "▼"; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
 <div class="contenedor">
     <header>
-        <img src="logo.png" alt="Logo Soledad" id="logo">
+        <img src="logo.png" alt="Logo" id="logo">
         <h1>Oficialía 02 de Soledad</h1>
-        <p>Registro Civil de San Luis Potosí</p>
+        <p>Registro Civil</p>
     </header>
 
-    <div class="aviso">
-        TODO TRÁMITE ES CON PREVIA CITA: 444-8-22-66-76 <br>
-        HORARIO: 8:00 AM A 6:00 PM
-    </div>
+    <details class="menu-principal">
+        <summary>REGISTRO DE NACIMIENTO</summary>
+        
+        <details class="submenu">
+            <summary>Padres Casados</summary>
+            <div class="contenido">
+                <ul class="lista-requisitos">
+                    <li>Certificado de Nacimiento Original y Copia</li>
+                    <li>Acta de Matrimonio Certificada (Vigencia mínima 1 año)</li>
+                    <li>Identificación INE de padres (Copia al 200%)</li>
+                    <li>Comprobante de domicilio reciente</li>
+                    <li>2 Testigos con INE vigente (Abuelos NO)</li>
+                </ul>
+            </div>
+        </details>
 
-    <h2 class="seccion-titulo">Registro de Nacimiento</h2>
-    
-    <h3>Padres Casados / Unión Libre</h3>
-    <ul class="lista-requisitos">
-        <li>Certificado de Nacimiento Original y Copia</li>
-        <li>Actas de Nacimiento de ambos o Acta de Matrimonio certificada</li>
-        <li>Identificación INE de padres (Copia al 200%)</li>
-        <li>Comprobante de domicilio reciente</li>
-        <li>2 Testigos con INE vigente (Abuelos NO)</li>
-    </ul>
+        <details class="submenu">
+            <summary>Unión Libre</summary>
+            <div class="contenido">
+                <ul class="lista-requisitos">
+                    <li>Certificado de Nacimiento Original y Copia</li>
+                    <li>Actas de Nacimiento de ambos padres (Vigencia mínima 1 año)</li>
+                    <li>Identificación INE de padres (Copia al 200%)</li>
+                    <li>Comprobante de domicilio reciente</li>
+                    <li>2 Testigos con INE vigente</li>
+                </ul>
+            </div>
+        </details>
 
-    <h3>Madre Soltera / Menores de Edad</h3>
-    <ul class="lista-requisitos">
-        <li>Acta de Nacimiento de la madre certificada</li>
-        <li>Identificación de la madre (Copia al 200%)</li>
-        <li>CURP o INE de los abuelos (Copia)</li>
-    </ul>
-    <div class="sub-nota">
-        <strong>Si los padres son MENORES DE EDAD:</strong><br>
-        1. Carta de Identidad (No mayor a 1 mes) y CURP.<br>
-        2. Acta de Nacimiento de Padre o Tutor reciente (No mayor a 1 año).
-    </div>
+        <details class="submenu">
+            <summary>Madre Soltera / Menores de Edad</summary>
+            <div class="contenido">
+                <ul class="lista-requisitos">
+                    <li>Acta de Nacimiento de la madre certificada</li>
+                    <li>Identificación de la madre (Copia al 200%)</li>
+                    <li><strong>Si son menores:</strong> Carta de Identidad (No mayor a 1 mes)</li>
+                    <li>Acta de nacimiento de padre o tutor reciente</li>
+                </ul>
+            </div>
+        </details>
+    </details>
 
-    <h3>Nacimiento en el Extranjero</h3>
-    <ul class="lista-requisitos">
-        <li>Acta de Nacimiento extranjera y Apostilla</li>
-        <li>Traducción por Perito Oficial Autorizado</li>
-        <li>Acta de Nacimiento de padre o madre mexicano</li>
-    </ul>
+    <details class="menu-principal">
+        <summary>MATRIMONIOS</summary>
+        <div class="contenido" style="background: #f9f9f9; color: #333;">
+            <ul class="lista-requisitos">
+                <li>Actas de Nacimiento (No mayor a un año)</li>
+                <li>INE de contrayentes (Copia al 200%)</li>
+                <li>Análisis Prenupciales y Certificado Médico</li>
+                <li>4 Testigos con identificación (No padres)</li>
+            </ul>
+            <div class="grid-fotos">
+                <img src="foto1.png">
+                <img src="foto2.png">
+                <img src="foto3.png">
+                <img src="boda4.pgn.jpeg">
+                <img src="boda5.pgn.jpeg">
+                <img src="boda6.pgn.jpeg">
+            </div>
+        </div>
+    </details>
 
-    <h2 class="seccion-titulo">Matrimonios</h2>
-    <ul class="lista-requisitos">
-        <li>Actas de Nacimiento (No mayor a un año)</li>
-        <li>INE de contrayentes (Copia al 200%)</li>
-        <li>Análisis Prenupciales y Certificado Médico Original</li>
-        <li>4 Testigos con identificación (No padres)</li>
-    </ul>
+    <details class="menu-principal">
+        <summary>OTROS TRÁMITES</summary>
+        
+        <details class="submenu">
+            <summary>Reconocimiento de Hijos</summary>
+            <div class="contenido">
+                <ul class="lista-requisitos">
+                    <li>Acta de Nacimiento del menor</li>
+                    <li>Acta de nacimiento de la madre</li>
+                    <li>Pago de Dirección General (Original y 2 copias)</li>
+                    <li>2 Testigos con INE al 200%</li>
+                </ul>
+                <div class="grid-fotos">
+                    <img src="nacimiento4.pgn.jpeg">
+                    <img src="nacimiento5.pgn.jpeg">
+                    <img src="nacimiento6.png.jpeg">
+                </div>
+            </div>
+        </details>
 
-    <div class="grid-fotos">
-        <img src="foto1.png" alt="Boda 1">
-        <img src="foto2.png" alt="Boda 2">
-        <img src="foto3.png" alt="Boda 3">
-        <img src="boda4.pgn.jpeg" alt="Boda 4">
-        <img src="boda5.pgn.jpeg" alt="Boda 5">
-        <img src="boda6.pgn.jpeg" alt="Boda 6">
-    </div>
+        <details class="submenu">
+            <summary>Divorcios</summary>
+            <div class="contenido">
+                <ul class="lista-requisitos">
+                    <li>Acta de Matrimonio Original y Copia</li>
+                    <li>Identificación vigente</li>
+                    <li>Sentencia judicial o convenio administrativo</li>
+                </ul>
+            </div>
+        </details>
+    </details>
 
-    <h2 class="seccion-titulo">Otros Trámites</h2>
-    
-    <h3>Reconocimiento de Hijos</h3>
-    <ul class="lista-requisitos">
-        <li>Acta de Nacimiento del menor (Formato único)</li>
-        <li>Acta de nacimiento de quien autoriza (Madre)</li>
-        <li>Pago de Dirección General (Original y 2 copias)</li>
-        <li>2 Testigos no abuelos con INE al 200%</li>
-    </ul>
-
-    <div class="grid-fotos">
-        <img src="nacimiento4.pgn.jpeg" alt="Ticket Reconocimiento 1">
-        <img src="nacimiento5.pgn.jpeg" alt="Ticket Reconocimiento 2">
-        <img src="nacimiento6.png.jpeg" alt="Ticket Reconocimiento 3">
-    </div>
-
-    <h3>Divorcios</h3>
-    <ul class="lista-requisitos">
-        <li>Acta de Matrimonio Original y Copia</li>
-        <li>Identificación vigente de los interesados</li>
-        <li>Presentar sentencia judicial o convenio administrativo</li>
-    </ul>
-
-    <div class="footer-info">
-        <p><strong>Soledad de Graciano Sánchez, San Luis Potosí</strong></p>
-        <p>Teléfono de Citas: 444-8-22-66-76 | Horario de 8:00 AM a 6:00 PM</p>
+    <div class="footer">
+        <p>Soledad de Graciano Sánchez, S.L.P.</p>
+        <p>Citas: 444-8-22-66-76 | Horario: 8:00 AM - 6:00 PM</p>
     </div>
 </div>
 
