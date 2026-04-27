@@ -3,141 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Civil - Oficialía 02</title>
+    <title>Oficialía 02 Soledad - Trámites</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f4f4; color: #333; }
-        
-        /* NAVBAR */
-        nav { background: #1B5E20; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        :root {
+            --verde-gob: #1a531a;
+            --verde-claro: #e8f5e9;
+            --dorado: #b8860b;
+        }
 
-        /* HEADER */
-        header { background: #2E7D32; color: white; text-align: center; padding: 60px 20px; position: relative; }
-        .logo { position: absolute; top: 15px; left: 15px; width: 130px; height: auto; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* GALERIA (Solo 2 fotos ahora) */
-        .galeria { display: flex; gap: 15px; padding: 20px; justify-content: center; }
-        .galeria img { width: 45%; height: 250px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--verde-claro);
+            padding: 15px;
+            color: #333;
+        }
 
-        /* CONTENIDO */
-        .container { max-width: 900px; margin: auto; padding: 20px; }
-        .card { background: white; padding: 25px; margin-bottom: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h2 { color: #2E7D32; border-bottom: 2px solid #e8f5e9; padding-bottom: 10px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-        /* ACORDEÓN INTERACTIVO */
-        .accordion { background: #2E7D32; color: white; cursor: pointer; padding: 15px; width: 100%; border: none; text-align: left; margin-top: 10px; border-radius: 8px; font-weight: bold; font-size: 16px; }
-        .accordion:hover { background: #1B5E20; }
-        .panel { max-height: 0; overflow: hidden; background: #e8f5e9; transition: max-height 0.3s ease-out; border-radius: 0 0 8px 8px; }
-        .panel p { padding: 15px; margin: 0; }
+        header { text-align: center; margin-bottom: 25px; }
+        #logo { max-width: 120px; margin-bottom: 10px; }
+        h1 { color: var(--verde-gob); font-size: 1.6rem; }
 
-        footer { background: #1B5E20; color: white; text-align: center; padding: 25px; margin-top: 40px; }
+        /* --- ACORDEÓN INTERACTIVO --- */
+        details {
+            background: #ffffff;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        summary {
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            background: var(--verde-gob);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::after { content: "➕"; font-size: 0.9rem; }
+        details[open] summary::after { content: "➖"; }
+        details[open] summary { background: var(--dorado); }
+
+        .contenido-tramite { padding: 20px; }
+
+        .lista-check {
+            list-style: none;
+            margin-bottom: 25px;
+            columns: 1;
+        }
+
+        .lista-check li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .lista-check li::before {
+            content: "✓";
+            color: var(--verde-gob);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- GALERÍA DE FOTOS --- */
+        .grid-fotos {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            margin-top: 20px;
+        }
+
+        .grid-fotos img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #eee;
+            transition: 0.3s;
+        }
+
+        .grid-fotos img:hover {
+            transform: scale(1.03);
+            border-color: var(--dorado);
+        }
+
+        .btn-drive {
+            display: inline-block;
+            background: #4285F4;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .footer { text-align: center; margin-top: 30px; font-size: 0.8rem; color: #666; }
+
+        @media (min-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .lista-check { columns: 2; }
+            .grid-fotos { grid-template-columns: repeat(3, 1fr); }
+        }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#requisitos">Requisitos</a>
-    <a href="#tramites">Otros Trámites</a>
-</nav>
+<div class="contenedor">
+    <header>
+        <img src="logo.png" alt="Logo Soledad" id="logo">
+        <h1>Oficialía 02 de Soledad</h1>
+        <p>Toca un trámite para ver requisitos y fotos</p>
+    </header>
 
-<header id="inicio">
-    <img src="logo.png" class="logo" alt="Logo">
-    <h1>Registro Civil - Oficialía 02</h1>
-    <p>Soledad de Graciano Sánchez | 2024 - 2027</p>
-</header>
+    <details>
+        <summary>Registro de Nacimiento</summary>
+        <div class="contenido-tramite">
+            <ul class="lista-check">
+                <li>Certificado de Nacimiento Original</li>
+                <li>Actas de padres (Vigencia 1 año)</li>
+                <li>INE de padres (Copia al 200%)</li>
+                <li>Comprobante de domicilio</li>
+                <li>2 Testigos con INE (No abuelos)</li>
+                <li>CURP de los abuelos</li>
+            </ul>
+            <h4 style="color:var(--verde-gob); margin-bottom:10px;">Galería (Fotos Originales + Nuevas)</h4>
+            <div class="grid-fotos">
+                <img src="nacimiento1.jpg" alt="Nacimiento Original 1">
+                <img src="nacimiento2.jpg" alt="Nacimiento Original 2">
+                <img src="nacimiento3.jpg" alt="Nacimiento Original 3">
+                <img src="nacimiento4.jpg" alt="Nacimiento Nueva 1">
+                <img src="nacimiento5.jpg" alt="Nacimiento Nueva 2">
+                <img src="nacimiento6.jpg" alt="Nacimiento Nueva 3">
+            </div>
+        </div>
+    </details>
 
-<div class="galeria">
-    <img src="foto1.png" alt="Oficina 1">
-    <img src="foto2.png" alt="Oficina 2">
-</div>
+    <details>
+        <summary>Matrimonios</summary>
+        <div class="contenido-tramite">
+            <ul class="lista-check">
+                <li>Actas de nacimiento (No mayor a 1 año)</li>
+                <li>Análisis prenupciales</li>
+                <li>Certificado médico</li>
+                <li>INE de contrayentes y padres</li>
+                <li>4 Testigos con INE</li>
+            </ul>
+            <h4 style="color:var(--verde-gob); margin-bottom:10px;">Galería (Fotos Originales + Nuevas)</h4>
+            <div class="grid-fotos">
+                <img src="boda1.jpg" alt="Boda Original 1">
+                <img src="boda2.jpg" alt="Boda Original 2">
+                <img src="boda3.jpg" alt="Boda Original 3">
+                <img src="boda4.jpg" alt="Boda Nueva 1">
+                <img src="boda5.jpg" alt="Boda Nueva 2">
+                <img src="boda6.jpg" alt="Boda Nueva 3">
+            </div>
+        </div>
+    </details>
 
-<div class="container">
-    <div class="card">
-        <h2>Atención al Público</h2>
-        <p><strong>Juez:</strong> Rosa Artemiza</p>
-        <p><strong>Horario:</strong> Lunes a Viernes de 8:00 AM a 6:00 PM</p>
-        <p>El Registro Civil es la institución encargada de dar certeza jurídica a los actos civiles de las personas como nacimientos, matrimonios y defunciones.</p>
-    </div>
+    <details>
+        <summary>Divorcios (Formulario)</summary>
+        <div class="contenido-tramite" style="text-align: center;">
+            <p>Acceda al formulario de Google Drive aquí:</p>
+            <a href="TU_LINK_DE_GOOGLE_DRIVE" class="btn-drive" target="_blank">📄 Formulario de Divorcio</a>
+        </div>
+    </details>
 
-    <div class="card">
-        <h2>💍 Matrimonios Gratuitos</h2>
-        <p>Este programa está disponible permanentemente si al menos uno de los contrayentes cuenta con <strong>INE con domicilio en Soledad de Graciano Sánchez</strong>.</p>
-    </div>
-
-    <div class="card" id="requisitos">
-        <h2>Requisitos para Matrimonio</h2>
-        <ul>
-            <li>Acta de nacimiento certificada (original y copia)</li>
-            <li>Credencial de elector (INE) vigente</li>
-            <li>Comprobante de domicilio reciente</li>
-            <li>Dos testigos por cada contrayente con copia de INE</li>
-            <li>Certificado médico oficial</li>
-            <li>Análisis prenupciales</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>👶 Registro de Nacimiento</h2>
-        <ul>
-            <li>Certificado de nacimiento original</li>
-            <li>Identificación oficial de los padres</li>
-            <li>Actas de nacimiento de los padres</li>
-            <li>Acta de matrimonio (en caso de estar casados)</li>
-            <li>Comprobante de domicilio</li>
-            <li>Dos testigos con identificación</li>
-        </ul>
-    </div>
-
-    <div class="card" id="tramites">
-        <h2>Otros Trámites Disponibles</h2>
-
-        <button class="accordion">Registro de Defunción</button>
-        <div class="panel"><p>Registro oficial del fallecimiento y emisión de la primera acta.</p></div>
-
-        <button class="accordion">Expedición de Actas</button>
-        <div class="panel"><p>Copias certificadas de nacimiento, matrimonio y defunción.</p></div>
-
-        <button class="accordion">Reconocimiento de Hijos</button>
-        <div class="panel"><p>Proceso legal para el reconocimiento de paternidad o maternidad.</p></div>
-
-        <button class="accordion">Divorcio Administrativo</button>
-        <div class="panel"><p>Separación legal voluntaria cuando no hay hijos menores o bienes en conflicto.</p></div>
-
-        <button class="accordion">Corrección de Actas</button>
-        <div class="panel"><p>Trámite para corregir errores ortográficos o de datos en documentos oficiales.</p></div>
-
-        <button class="accordion">Constancias</button>
-        <div class="panel"><p>Emisión de constancias de soltería y de inexistencia de registro.</p></div>
+    <div class="footer">
+        <p>Soledad de Graciano Sánchez, S.L.P.</p>
+        <p>Tel: 444-8-22-66-76</p>
     </div>
 </div>
-
-<footer>
-    <p>Oficialía 02 - Registro Civil | Patrimonio de Todos | Soledad</p>
-</footer>
-
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            // Cerrar otros paneles abiertos
-            for (let j = 0; j < acc.length; j++) {
-                if (acc[j] !== this) {
-                    acc[j].nextElementSibling.style.maxHeight = null;
-                }
-            }
-            // Abrir o cerrar el actual
-            let panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
-</script>
 
 </body>
 </html>
