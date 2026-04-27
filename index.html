@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficialía 02 Soledad</title>
+    <title>Oficialía 02 Soledad - Requisitos Completos</title>
     <style>
         :root {
             --verde-gob: #1a531a;
@@ -11,169 +11,104 @@
             --crema: #fdf5e6;
         }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 10px;
-            margin: 0;
-        }
+        body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 10px; margin: 0; }
+        .contenedor { max-width: 700px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        header { text-align: center; border-bottom: 3px solid var(--verde-gob); padding-bottom: 10px; margin-bottom: 20px; }
+        #logo { max-width: 100px; }
+        h1 { color: var(--verde-gob); font-size: 1.5rem; margin: 5px 0; }
+        .cita { background: #d9534f; color: white; padding: 5px; border-radius: 5px; font-weight: bold; font-size: 0.9rem; }
 
-        .contenedor {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        /* ACORDEÓN PRINCIPAL */
+        .menu-principal { margin-bottom: 15px; border-radius: 10px; border: 1px solid #ccc; overflow: hidden; }
+        .menu-principal > summary { padding: 15px; background: var(--verde-gob); color: white; font-weight: bold; cursor: pointer; list-style: none; }
 
-        header { text-align: center; margin-bottom: 20px; }
-        #logo { max-width: 90px; }
-        h1 { color: var(--verde-gob); font-size: 1.4rem; margin: 5px 0; }
+        /* ACORDEÓN ANIDADO */
+        .sub-menu { margin: 10px; border-left: 5px solid var(--dorado); background: var(--crema); border-radius: 5px; }
+        .sub-menu summary { padding: 12px; font-weight: bold; cursor: pointer; list-style: none; color: var(--verde-gob); }
 
-        /* --- ESTILO ACORDEÓN PRINCIPAL (Nivel 1) --- */
-        .tramite-principal {
-            margin-bottom: 10px;
-            border: 1px solid var(--verde-gob);
-            border-radius: 8px;
-            overflow: hidden;
-        }
+        .contenido-detallado { padding: 15px; background: white; border-top: 1px solid #eee; }
+        
+        .lista-requisitos { list-style: none; padding: 0; }
+        .lista-requisitos li { margin-bottom: 8px; padding-left: 25px; position: relative; font-size: 0.95rem; }
+        .lista-requisitos li::before { content: "✓"; color: var(--verde-gob); position: absolute; left: 0; font-weight: bold; }
 
-        .tramite-principal > summary {
-            padding: 15px;
-            background: var(--verde-gob);
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-        }
+        .nota-menores { background: #fff3cd; padding: 10px; border-radius: 5px; border: 1px solid #ffeeba; font-size: 0.9rem; margin-top: 10px; }
 
-        /* --- ESTILO SUB-ACORDEÓN (Nivel 2) --- */
-        .sub-opcion {
-            margin: 8px;
-            border: 1px solid var(--dorado);
-            border-radius: 5px;
-        }
+        /* GALERÍA */
+        .galeria { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 15px; }
+        .galeria img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; border: 2px solid #eee; }
 
-        .sub-opcion > summary {
-            padding: 10px;
-            background: var(--crema);
-            color: var(--dorado);
-            font-weight: bold;
-            cursor: pointer;
-            list-style: none;
-        }
-
-        /* Contenido final de requisitos */
-        .info-requisitos {
-            padding: 15px;
-            background: white;
-            font-size: 0.9rem;
-        }
-
-        .lista-check {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .lista-check li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .lista-check li::before {
-            content: "✓";
-            color: var(--verde-gob);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Imágenes */
-        .galeria {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 5px;
-            margin-top: 10px;
-        }
-
-        .galeria img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .footer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #777;
-            margin-top: 20px;
-        }
-
-        summary::after { content: " ▾"; }
+        .footer { text-align: center; margin-top: 30px; font-size: 0.8rem; color: #666; border-top: 1px solid #eee; padding-top: 10px; }
     </style>
 </head>
 <body>
 
 <div class="contenedor">
     <header>
-        <img src="logo.png" alt="Logo" id="logo">
+        <img src="logo.png" alt="Logo Soledad" id="logo">
         <h1>Oficialía 02 de Soledad</h1>
-        <p style="font-size: 0.8rem; font-weight: bold; color: #d9534f;">TODO TRÁMITE ES CON PREVIA CITA</p>
+        <p class="cita">TODO TRÁMITE ES CON PREVIA CITA: 444-8-22-66-76</p>
     </header>
 
-    <details class="tramite-principal">
+    <details class="menu-principal">
         <summary>REGISTRO DE NACIMIENTO</summary>
         
-        <details class="sub-opcion">
+        <details class="sub-menu">
             <summary>Padres Casados</summary>
-            <div class="info-requisitos">
-                <ul class="lista-check">
-                    <li>Certificado de Nacimiento Original</li>
-                    <li>Acta de Matrimonio Certificada</li>
-                    <li>Identificación de padres (Copia 200%)</li>
-                    <li>Comprobante de domicilio</li>
+            <div class="contenido-detallado">
+                <ul class="lista-requisitos">
+                    <li>Certificado de nacimiento del bebé (Original y copia)</li>
+                    <li>Acta de matrimonio certificada (Vigencia mínima 1 año)</li>
+                    <li>Identificación de padres vigentes (Copia al 200%)</li>
+                    <li>Comprobante de domicilio reciente (Original y copia)</li>
+                    <li>2 Testigos con INE vigente (Abuelos NO pueden ser testigos)</li>
+                    <li>CURP o INE de los abuelos del bebé (Copia)</li>
                 </ul>
             </div>
         </details>
 
-        <details class="sub-opcion">
+        <details class="sub-menu">
             <summary>Unión Libre</summary>
-            <div class="info-requisitos">
-                <ul class="lista-check">
-                    <li>Certificado de Nacimiento Original</li>
-                    <li>Acta de nacimiento de ambos padres</li>
-                    <li>Identificación de padres (Copia 200%)</li>
-                    <li>2 Testigos con INE vigente</li>
+            <div class="contenido-detallado">
+                <ul class="lista-requisitos">
+                    <li>Certificado de nacimiento del bebé (Original y copia)</li>
+                    <li>Actas de nacimiento de ambos padres (Vigencia mínima 1 año)</li>
+                    <li>Identificación de padres vigentes (Copia al 200%)</li>
+                    <li>Comprobante de domicilio reciente (Original y copia)</li>
+                    <li>2 Testigos con INE vigente (Copia al 200%)</li>
                 </ul>
             </div>
         </details>
 
-        <details class="sub-opcion">
-            <summary>Madre Soltera / Menores</summary>
-            <div class="info-requisitos">
-                <ul class="lista-check">
-                    <li>Acta de nacimiento de la madre</li>
-                    <li>INE de la madre (Copia 200%)</li>
-                    <li><strong>Si son menores:</strong> Carta de Identidad y Acta del Tutor</li>
+        <details class="sub-menu">
+            <summary>Madre Soltera / Menores de Edad</summary>
+            <div class="contenido-detallado">
+                <ul class="lista-requisitos">
+                    <li>Certificado de nacimiento del bebé (Original y copia)</li>
+                    <li>Acta de nacimiento de madre certificada (Vigencia mínima 1 año)</li>
+                    <li>Identificación de mamá vigente (Copia al 200%)</li>
+                    <li>Comprobante de domicilio reciente (Original y copia)</li>
                 </ul>
+                <div class="nota-menores">
+                    <strong>PARA PADRES MENORES DE EDAD:</strong><br>
+                    • Carta de Identidad (No mayor a 1 mes) y CURP.<br>
+                    • Acta de nacimiento de padre o tutor reciente (No mayor a 1 año).
+                </div>
             </div>
         </details>
     </details>
 
-    <details class="tramite-principal">
+    <details class="menu-principal">
         <summary>MATRIMONIOS</summary>
-        <div class="info-requisitos">
-            <ul class="lista-check">
-                <li>Actas de nacimiento recientes</li>
-                <li>INE de contrayentes (Copia 200%)</li>
-                <li>Análisis prenupciales</li>
-                <li>4 Testigos con INE</li>
+        <div class="contenido-detallado">
+            <ul class="lista-requisitos">
+                <li>Actas de nacimiento (No mayor a un año, Original y copia)</li>
+                <li>INE de contrayentes (Original y copia al 200%)</li>
+                <li>Comprobante de domicilio y Cartilla militar</li>
+                <li>Análisis Prenupciales y Certificado Médico Original</li>
+                <li>4 Testigos con identificación (No padres)</li>
+                <li>Si hay hijos: Presentar acta de nacimiento reciente</li>
             </ul>
             <div class="galeria">
                 <img src="foto1.png"> <img src="foto2.png"> <img src="foto3.png">
@@ -182,31 +117,40 @@
         </div>
     </details>
 
-    <details class="tramite-principal">
-        <summary>RECONOCIMIENTO DE HIJOS</summary>
-        <div class="info-requisitos">
-            <ul class="lista-check">
-                <li>Acta de nacimiento del menor</li>
-                <li>Pago de Dirección General</li>
-                <li>INE de padres y testigos</li>
-            </ul>
-            <div class="galeria">
-                <img src="nacimiento4.pgn.jpeg">
-                <img src="nacimiento5.pgn.jpeg">
-                <img src="nacimiento6.png.jpeg">
+    <details class="menu-principal">
+        <summary>RECONOCIMIENTO DE HIJOS Y DIVORCIOS</summary>
+        
+        <details class="sub-menu">
+            <summary>Reconocimiento de Hijos</summary>
+            <div class="contenido-detallado">
+                <ul class="lista-requisitos">
+                    <li>Acta de nacimiento del menor (Formato único)</li>
+                    <li>Acta de nacimiento de quien autoriza (Madre)</li>
+                    <li>Identificación INE padres y testigos (Copia al 200%)</li>
+                    <li>Pago de Dirección General (Original y 2 copias)</li>
+                </ul>
+                <div class="galeria">
+                    <img src="nacimiento4.pgn.jpeg">
+                    <img src="nacimiento5.pgn.jpeg">
+                    <img src="nacimiento6.png.jpeg">
+                </div>
             </div>
-        </div>
-    </details>
+        </details>
 
-    <details class="tramite-principal">
-        <summary>DIVORCIOS</summary>
-        <div class="info-requisitos">
-            <p>Favor de presentar sentencia judicial o acta de matrimonio para revisión de convenio administrativo.</p>
-        </div>
+        <details class="sub-menu">
+            <summary>Divorcios</summary>
+            <div class="contenido-detallado">
+                <ul class="lista-requisitos">
+                    <li>Acta de matrimonio certificada (Original y copia)</li>
+                    <li>Identificación oficial de ambos</li>
+                    <li>Sentencia judicial o convenio administrativo según corresponda</li>
+                </ul>
+            </div>
+        </details>
     </details>
 
     <div class="footer">
-        <p>Soledad de Graciano Sánchez, S.L.P.<br>Citas: 444-8-22-66-76</p>
+        <p>Soledad de Graciano Sánchez, S.L.P.<br>Oficialía 02 | Horario: 8:00 AM - 6:00 PM</p>
     </div>
 </div>
 
